@@ -5,7 +5,7 @@ The current author are not security experts and this project has not been subjec
 
 The security of Savage is important to us. We encourage you to report security problems to us responsibly.
 
-Please report all security bugs to `savage {AT} rebertia [DOT] com`. We aim to respond (with at least an acknowledgment) within one business day. We will keep you updated on the bug's status as we work towards resolving it.
+Please report all security bugs to `savage {AT} chrisrebert [DOT] com`. We aim to respond (with at least an acknowledgment) within one business day. We will keep you updated on the bug's status as we work towards resolving it.
 
 We will disclose a problem to the public once it has been confirmed and a fix has been made available. At that point, you will be credited for your discovery in the documentation, in the release announcements, and (if applicable) in the code itself.
 
@@ -26,7 +26,9 @@ We thank you again for helping ensure the security of Savage by responsibly repo
 [GitHub]  <<<(Request details about the PR using the PR's HEAD commit's SHA)<<<  [Savage]
 [GitHub]  >>>(Response with details about the PR)>>>  [Savage]
 * Savage checks list of files modified by the PR against the whitelist
-  * If any files are outside of the whitelist, stop further processing.
+  * If any files are outside of the whitelist, stop further processing,
+      unless the user submitting the PR is trusted (by virtue of being a public member of a GitHub organization
+      in the list defined by the `savage.trusted-orgs` setting)
 
 [GitHub]  <<<(Request for Git data for the PR's HEAD commit via its SHA)<<<  [Savage]
 [GitHub]  >>>(Response with Git data for the PR's HEAD commit)>>>  [Savage]

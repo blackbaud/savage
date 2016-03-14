@@ -2,10 +2,10 @@ Savage
 ======
 [![Build Status](https://travis-ci.org/twbs/savage.svg?branch=master)](https://travis-ci.org/twbs/savage)
 ![Development Status :: 4 - Beta](https://img.shields.io/badge/maturity-beta-yellowgreen.svg "Development Status :: 4 - Beta")
-[![MIT License](https://img.shields.io/github/license/twbs/savage.svg)](https://github.com/twbs/savage/blob/master/LICENSE.txt)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg "MIT License")](https://github.com/twbs/savage/blob/master/LICENSE.txt)
 
 Savage is a service that watches for new or updated pull requests on a given GitHub repository. For each pull request, it evaluates whether the changes are "safe" (i.e. we can run a Travis CI build with them with heightened permissions without worrying about security issues) and "interesting" (i.e. would benefit from a Travis CI build with them with heightened permissions), based on which files were modified. If the pull request is "safe" and "interesting", then it initiates a Travis CI build with heightened permissions on a specified GitHub repository. When the Travis CI build completes, it posts a comment ([like this one](https://github.com/twbs/bootstrap/pull/15178#issuecomment-63756231)) with the test results on the pull request. If the test failed, the pull requester can then revise their code to fix the problem.
-Users who are members of trusted GitHub organizations (see the `trusted-orgs` setting) can ask Savage to retry a pull request by leaving a comment on the pull request of the form: "@\<username-of-savage-bot> retry" (e.g. "@twbs-savage retry")
+Users who are [public members](https://help.github.com/articles/publicizing-or-hiding-organization-membership/) of trusted GitHub organizations (see the `trusted-orgs` setting) can ask Savage to retry a pull request by leaving a comment on the pull request of the form: "@\<username-of-savage-bot> retry" (e.g. "@twbs-savage retry")
 
 Savage's original use-case is for running Sauce Labs cross-browser JS tests on pull requests via Travis CI, while keeping the Sauce Labs access credentials private & secure.
 
@@ -34,6 +34,7 @@ By automating the process of initiating Travis-based Sauce tests and posting the
 ## Used by
 * [Bootstrap](https://github.com/twbs/bootstrap); see [@twbs-savage](https://github.com/twbs-savage)
 * [Video.js](http://www.videojs.com/); see [@pam](https://github.com/pam)
+* [Sky UX](https://github.com/blackbaud/skyux); see [@blackbaud-sky-savage](https://github.com/blackbaud-sky-savage)
 
 ## DISCLAIMER
 The current authors are not security experts and this project has not been subjected to a third-party security audit.
@@ -84,7 +85,7 @@ savage {
     ignore-branches-from-watched-repo = true
     // Pull requests must target one of these branches in the watched repo
     allowed-base-branches = [ "master" ]
-    // List of GitHub organization names whose users Savage should trust to authorize retries of builds
+    // List of GitHub organization names whose public members Savage should trust to authorize retries of builds
     trusted-orgs = [ "twbs" ]
     // List of Unix file globs constituting the whitelist of safely editable files
     whitelist = [
